@@ -1,0 +1,19 @@
+<header class="header">
+  <nav class="nav">
+
+    <div class="header-left">
+      <%= link_to "YouTube Matching", root_path %>
+    </div>
+
+    <div class="header-right">
+      <% if logged_in? %>
+        <%= current_user.name %>
+        <%= link_to 'ログアウト', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "ログイン", login_path %>
+        <%= link_to "新規登録", signup_path %>
+      <% end %>
+    </div>
+
+  </nav>
+</header>

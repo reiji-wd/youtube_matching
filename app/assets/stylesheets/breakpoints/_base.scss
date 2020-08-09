@@ -1,0 +1,136 @@
+.content-width {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main-content {
+  padding: 100px 0px 25px 0px;
+}
+
+.header {
+  width: 100%;
+  height: 75px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+
+  & nav {
+    @extend .content-width;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &-left {
+    font-size: 30px;
+  }
+
+}
+
+.post-form {
+  position: fixed;
+  top: 75px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  transition: all 0.5s ease;
+
+  &.close {
+    z-index: 100;
+    transform: translateY(-120px);
+  }
+
+  &-main {
+    height: 120px;
+    padding-top: 20px;
+
+  }
+
+  & textarea {
+    @extend .content-width;
+    border-radius: 5px;
+    resize: none;
+  }
+
+  & .post-btn {
+    width: 100px;
+    border: none;
+    background-color: #00BCD4;
+    border-radius: 5px;
+    height: 35px;
+    color: white;
+  }
+
+  &-btn {
+    color: $cGray;
+    font-size: 20px;
+    height: 25px;  
+    border-bottom: 1px solid #80808038;
+
+    
+    &:hover {
+      background-color: #80808038;
+      cursor: pointer;
+    }
+  }
+
+}
+
+
+.posts {
+  margin-top: 220px;
+  border-top: 1px solid $cRed;
+
+  & .post-item {
+    border-bottom: 1px solid $cRed;
+    padding: 15px;
+    
+    & .post-time {
+      display: inline;
+      color: $cGray;
+    }
+
+    & .post-delete {
+      float: right;
+    }
+  }
+}
+  
+
+.channels {
+
+  & .channel-item {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+
+    & .channel-main {
+      display: flex;
+      align-items: center;
+      
+      & .channel-icon {   
+        & img {
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          box-shadow: 0px 0px 1px black;
+        }
+      }
+
+      & .channel-details {
+        margin-left: 30px;
+        width: 250px;
+    
+        & .channel-subscriber {
+          color: $cGray;
+        }
+      }
+    }
+
+  }
+}

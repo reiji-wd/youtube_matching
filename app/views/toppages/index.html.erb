@@ -1,0 +1,26 @@
+<% if logged_in? %>
+
+<div class="post-form">
+  <div class="post-form-main">
+
+    <textarea class="post-text"></textarea>
+    <button class="post-btn">投稿</button>
+
+
+  </div>
+
+  <div class="post-form-btn">
+    <i class="fas fa-angle-double-down"></i>
+  </div>
+
+</div>
+
+<div class="posts">
+  <%= render @posts %>
+</div>
+
+<% else %>
+  <%= link_to '新規登録', signup_path %>
+<% end%>
+
+<%= javascript_pack_tag 'post-form' %>

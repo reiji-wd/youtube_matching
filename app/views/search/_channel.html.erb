@@ -1,0 +1,23 @@
+
+<% i = 0 %>
+<% while i < 10 do %>
+<div class="channel-item">
+  <div class="channel-main">
+    <div class="channel-icon">
+      <%= image_tag icons[i] %> 
+    </div>  
+    <div class="channel-details">
+      <div class="channel-title">
+        <%= channels[i].snippet.channel_title %> 
+      </div>
+      <div class="channel-subscriber">
+        <%= "チャンネル登録者数 #{subscribers[i]}人" %>
+      </div>  
+    </div>
+  </div>
+  <div class="channel-favorite">
+    <%= button_to 'お気に入り' %>
+  </div>
+</div> 
+<% i += 1 %>
+<% end %>
