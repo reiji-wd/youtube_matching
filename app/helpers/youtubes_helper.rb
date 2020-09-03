@@ -5,7 +5,7 @@ module YoutubesHelper
 
   def youtuber_search
     youtube = youtube_service
-    channel_search_list = youtube.list_searches(:snippet, q: params[:keyword], type: 'channel', max_results: 10)
+    channel_search_list = youtube.list_searches(:snippet, q: params[:channel_name], type: 'channel', max_results: 10)
     channels = channel_search_list.items
 
     icon_search_list = []

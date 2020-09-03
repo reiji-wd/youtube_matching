@@ -10,18 +10,19 @@ const toppageChannel = consumer.subscriptions.create("ToppageChannel", {
   },
 
   received(data) {
+    debugger
     // const posts = document.querySelector('.posts');
     // posts.insertAdjacentHTML('afterbegin', data['post']);
-    const el = document.querySelector('#user_id');
-    const user_id = Number(el.getAttribute('data-user-id'));
+//     const el = document.querySelector('#user_id');
+//     const user_id = Number(el.getAttribute('data-user-id'));
 
-    if (user_id === data.post.user_id) {
-      var html = data.mine
-    } else {
-      var html = data.theirs
-    }
+//     if (user_id === data.post.user_id) {
+//       var html = data.mine
+//     } else {
+//       var html = data.theirs
+//     }
 
-　　$('.posts').prepend(html);
+// 　　$('.posts').prepend(html);
     // Called when there's incoming data on the websocket for this channel
   },
 
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
   btn.addEventListener('click', function(){
   const post = text.value;
   // debugger
-  toppageChannel.tweet(post)
+  toppageChannel.tweet(post, user_id)
   text.value = '';
   });
 });

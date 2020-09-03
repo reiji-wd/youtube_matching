@@ -2,7 +2,7 @@
   <%= form_with(model: current_user.favorites.find_by(post_id: post.id), method: :delete) do |f| %>
     <%= hidden_field_tag :post_id, post.id %>
     <%= f.button :type => "submit", style: 'border-style: none; background-color: white;' do %>
-      <i class='fas fa-star'></i> 
+      <i class='fas fa-star'></i>
     <% end %>
   <% end %>
 <% else %>

@@ -12,6 +12,10 @@
       <%= post.created_at.to_s(:datetime_jp) %>
     </div>
 
+    <div class="post-favorites-<%= post.id %>">
+      <%= render 'favorites/btn', post: post, current_user: current_user %>
+    </div>
+
       <%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: 'post-delete' %>
 
   </div>

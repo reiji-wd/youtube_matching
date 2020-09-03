@@ -19,6 +19,19 @@ consumer.subscriptions.create("UserChannel", {
     if(data.request) {
       $('#requests').prepend(data.request);
     }
+
+    if(data.post) {
+      if(data.mine) {
+        var html = data.mine
+      }
+      if(data.theirs) {
+        var html = data.theirs
+      }
+      $('.posts').prepend(html);
+    }
+    
+
+
     // Called when there's incoming data on the websocket for this channel
   }
 });

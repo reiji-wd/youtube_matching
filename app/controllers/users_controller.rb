@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     else
       @room = Room.find_by(user_id: @user.id, friend_id: current_user.id)
     end
-
   end
 
   def new
@@ -28,6 +27,15 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def look
+    @youtuber = Youtuber.find_by(channel_id: params[:channel_id])
+    users = []
+    @youtuber.likes.each do |user|
+      users << User.find(user.user_id)
+    end
+    @users = users
   end
 
   private

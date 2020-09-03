@@ -65,6 +65,9 @@
       </div>
 
       <div class="youtubers menu-items">
+        <% if current_user == @user %>
+          <%= link_to 'YouTuberを追加する', youtubers_path %>
+        <% end %>
         <%= render @youtubers %>
       </div>
     </div>
