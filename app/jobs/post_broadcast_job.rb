@@ -2,12 +2,17 @@ class PostBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(post)
-    ActionCable.server.broadcast 'toppage_channel', post: render_post(post)
+    mine = ApplicationController.render(
+      partial: 'posts/mine',
+      locals: { post: post }
+    )
+
+    theirs = ApplicationController.render(
+      partial: 'posts/theirs',
+      locals: { post: post }
+    )
+
+    ActionCable.server.broadcast 'toppage_channel', mine: mine, theirs: theirs, post: post
   end
 
-  private
-
-  def render_post(post)
-    ApplicationController.renderer.render partial: 'posts/post', locals: { post: post, current_user: post.user } 
-  end
 end

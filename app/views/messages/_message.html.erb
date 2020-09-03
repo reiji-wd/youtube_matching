@@ -1,0 +1,8 @@
+<div class="message-item  <%= 'me' if message.user == current_user %>">
+  <div class="message-item-name">
+    <%= message.user.name %>
+  </div>
+  <div class="message-item-content">
+    <%= message.content %>
+  </div>
+</div>

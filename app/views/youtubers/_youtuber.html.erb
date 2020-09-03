@@ -1,0 +1,23 @@
+
+
+
+<div class="youtuber-item">
+  <%= link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank" do %>
+    <div class="youtuber-main">
+      <div class="youtuber-icon">
+        <%= image_tag youtuber.icon %> 
+      </div>  
+      <div class="youtuber-details">
+        <div class="youtuber-title">
+          <%= "#{youtuber.title}" %> 
+        </div>
+        <div class="youtuber-subscriber">
+          <%= "チャンネル登録者数 #{youtuber.subscribers}人" %>
+        </div>
+      </div>
+    </div>
+  <% end %> 
+  <div class="youtuber-likes-<%= youtuber.id %>"> 
+    <%= render 'likes/btn', youtuber: youtuber %>
+  </div>
+</div> 

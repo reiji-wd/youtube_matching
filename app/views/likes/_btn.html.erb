@@ -1,0 +1,11 @@
+<% if current_user.like?(youtuber) %>
+  <%= form_with(model: current_user.likes.find_by(youtuber_id: youtuber.id), method: :delete) do |f| %>
+    <%= hidden_field_tag :youtuber_id, youtuber.id %>
+    <%= f.submit '解除' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.likes.build) do |f| %>
+    <%= hidden_field_tag :youtuber_id, youtuber.id %>
+    <%= f.submit 'お気に入り' %>
+  <% end %>
+<% end %>

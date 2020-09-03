@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_user: one
+  recieve_user: one
+
+two:
+  from_user: two
+  recieve_user: two

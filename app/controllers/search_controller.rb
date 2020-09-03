@@ -1,19 +1,20 @@
 class SearchController < ApplicationController
   def index
+    youtuber = youtuber_search
+    channels = youtuber[0]
+    icons = youtuber[1]
+    subscribers = youtuber[2]
+    i = 0
+    youtuber_list = []
+    while i < 10 do 
+      youtuber_list << Youtuber.find_or_create_by(channel_id: channels[i].id.channel_id, title: channels[i].snippet.channel_title, icon: icons[i], subscribers: subscribers[i])
+      i += 1
+    end 
+    @youtubers = youtuber_list  
 
-    youtube = youtube_service
-    channel_search_list = youtube.list_searches(:snippet, q: params[:keyword], type: 'channel', max_results: 10)
-    @channels = channel_search_list.items
-
-    icon_search_list = []
-    subscriber_search_list = []
-    @channels.each do |channel|
-      icon_search_list << youtube.list_channels(:snippet, id: channel.id.channel_id, max_results: 10).items[0].snippet.thumbnails.high.url
-      subscriber_search_list << youtube.list_channels(:statistics, id: channel.id.channel_id, max_results: 10).items[0].statistics.subscriber_count
-    end
-    @icons = icon_search_list
-    @subscribers = subscriber_search_list
+    @posts = Post.where('content LIKE ?', "%#{params[:keyword]}%")
     
+    @users = User.where('name LIKE ?', "%#{params[:keyword]}%")
   end
 
 end

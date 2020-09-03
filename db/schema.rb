@@ -10,7 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_152549) do
+ActiveRecord::Schema.define(version: 2020_09_01_112327) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "friendrequests", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friendrequests_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friendrequests_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friendrequests_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "youtuber_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["youtuber_id"], name: "index_likes_on_youtuber_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.string "image"
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "reciever_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "content"
+    t.integer "check"
+    t.index ["reciever_id"], name: "index_notices_on_reciever_id"
+    t.index ["sender_id", "reciever_id"], name: "index_notices_on_sender_id_and_reciever_id", unique: true
+    t.index ["sender_id"], name: "index_notices_on_sender_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "content"
@@ -20,13 +71,58 @@ ActiveRecord::Schema.define(version: 2020_07_25_152549) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_relationships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_relationships_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_rooms_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_rooms_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_id"
+    t.string "icon"
   end
 
+  create_table "youtubers", force: :cascade do |t|
+    t.string "channel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "icon"
+    t.integer "subscribers"
+  end
+
+  add_foreign_key "favorites", "posts"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "friendrequests", "users"
+  add_foreign_key "friendrequests", "users", column: "friend_id"
+  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "youtubers"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "notices", "users", column: "reciever_id"
+  add_foreign_key "notices", "users", column: "sender_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "friend_id"
+  add_foreign_key "rooms", "users"
+  add_foreign_key "rooms", "users", column: "friend_id"
 end

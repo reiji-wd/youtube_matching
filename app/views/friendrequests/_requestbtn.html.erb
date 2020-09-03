@@ -1,0 +1,11 @@
+<% if current_user.request?(user) %>
+  <%= form_with(model: current_user.friendrequests.find_by(friend_id: user.id), method: :delete) do |f| %>
+    <%= hidden_field_tag :friend_id, user.id %>
+    <%= f.submit '取り消し' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.friendrequests.build) do |f| %>
+    <%= hidden_field_tag :friend_id, user.id %>
+    <%= f.submit 'フレンド申請' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="requests-<%= friendrequest.id %>">
+  <% if friendrequest.user.icon == nil %>
+    <%= image_tag '/user_icon/user_default.jpg' %>
+  <% else %>
+    <%= image_tag friendrequest.user.icon %>
+  <% end %>  
+  <%= friendrequest.user.name %>
+  <div id="request-recieve">
+    <%= form_with(model: current_user.relationships.build) do |f| %>
+      <%= hidden_field_tag :friend_id, friendrequest.user.id %>
+      <%= f.submit '申請を承認する' %>
+    <% end %>
+  </div>
+</div>
+
+

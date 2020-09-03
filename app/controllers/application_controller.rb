@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
   include YoutubesHelper
+  include NoticesHelper
 
   private
 
@@ -14,4 +15,6 @@ class ApplicationController < ActionController::Base
   def counts(user)
     @count_posts = user.posts.count
   end
+
+  
 end

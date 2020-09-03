@@ -57,3 +57,4 @@ gem 'font-awesome-sass'
 
 gem 'google-api-client'
 gem 'dotenv-rails'
+gem 'carrierwave'

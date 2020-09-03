@@ -1,0 +1,10 @@
+<div id='room' data-room_id="<%= @room.id %>">
+  <%= "#{@user.name}さんとのトークルーム" %>
+
+  <div class="messages">
+    <%= render @messages %>
+  </div>
+
+  <textarea class="message-text"></textarea>
+  <button class="message-btn">送信</button>
+</div>

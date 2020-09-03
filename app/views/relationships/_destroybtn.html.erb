@@ -1,0 +1,4 @@
+<%= form_with(model: current_user.relationships.find_by(friend_id: user.id), method: :delete) do |f| %>
+  <%= hidden_field_tag :friend_id, user.id %>
+  <%= f.submit 'フレンド解除' %>
+<% end %>

@@ -1,8 +1,75 @@
 <div class="user-profile">
-  <%= @user.name %>
+  <div class="profile-top">
+    <div class="profile-top-icon">
+      <% if @user.icon == nil %>
+        <%= image_tag '/user_icon/user_default.jpg' %>
+      <% else %>
+        <%= image_tag @user.icon %>
+      <% end %>
+    </div>
+    <div class="profile-top-right">
+      <div class="profile-name">
+        <%= "#{@user.name}" %>
+      </div>
+      <% if current_user != @user %>
+          
+        <% if current_user.friend?(@user) || current_user.otherfriend?(@user) %>
+          <div class="friend-destroy">
+            <%= render 'relationships/destroybtn', user: @user %>
+          </div>
+          <div class="profile-room-btn">
+            <%= link_to 'メッセージを送る', room_path(@room) %>
+          </div>
+        <% else %>
+          <div class="profile-friend-btn<%= @user.id %>">
+            <%= render 'friendrequests/requestbtn', user: @user %>
+          </div>
+        <% end %>
 
-  <%= @count_posts %>
+      <% else %>
+        <%= link_to 'フレンド申請一覧', friendrequest_path(@user) %>
+      <% end %>
+    </div>
+  </div>
 
-  <%= render @posts %>
-  
+  <div class="profile-content">
+    あああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+  </div>
+
+  <div class="profile-menu">
+    <div class="profile-menu-posts tab menu-open">
+      投稿
+    </div>
+    <div class="profile-menu-favorites tab">
+      お気に入り
+    </div>
+    <div class="profile-menu-friends tab">
+      フレンド
+    </div>
+    <div class="profile-menu-likes tab">
+      好きなYouTuber
+    </div>
+  </div>
+
+  <div class="profile-menu-items">
+    <div class="profile-menu-items-contents">
+      <div class="posts menu-items item-open">
+        <%= render @posts %>
+      </div>
+
+      <div class="favorites menu-items">
+        <%= render @favorites %>
+      </div>
+
+      <div class="menu-items">
+      </div>
+
+      <div class="youtubers menu-items">
+        <%= render @youtubers %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<%= javascript_pack_tag 'profile'%>

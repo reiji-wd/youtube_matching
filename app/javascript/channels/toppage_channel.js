@@ -12,7 +12,16 @@ const toppageChannel = consumer.subscriptions.create("ToppageChannel", {
   received(data) {
     // const posts = document.querySelector('.posts');
     // posts.insertAdjacentHTML('afterbegin', data['post']);
-　　$('.posts').prepend(data['post']);
+    const el = document.querySelector('#user_id');
+    const user_id = Number(el.getAttribute('data-user-id'));
+
+    if (user_id === data.post.user_id) {
+      var html = data.mine
+    } else {
+      var html = data.theirs
+    }
+
+　　$('.posts').prepend(html);
     // Called when there's incoming data on the websocket for this channel
   },
 
