@@ -12,8 +12,18 @@ consumer.subscriptions.create("UserChannel", {
   received(data) {
     if(data.notice) {
       $('#notices').prepend(data.notice);
-      var newNoticeCount = document.querySelector('.new-notice-count')
-      newNoticeCount.innerHTML = "<i class='fas fa-circle'></i>"
+      var el = document.querySelector('.new-notice');
+      var otherel = document.querySelector('.new-notice-count')
+      var newNotice = el.text;
+      if(newNotice == undefined && otherel == undefined) {
+        newNotice = "1";
+        el.innerHTML = `<div class="new-notice-count">${newNotice}</div>`
+      } else {
+        var counts = Number(otherel.textContent);
+        counts += 1;
+        String(counts);
+        otherel.textContent = counts;
+      }
     }
     
     if(data.request) {
