@@ -15,7 +15,7 @@ consumer.subscriptions.create("UserChannel", {
       var el = document.querySelector('.new-notice');
       var otherel = document.querySelector('.new-notice-count')
       var newNotice = el.text;
-      if(newNotice == undefined && otherel == undefined) {
+      if(otherel == undefined) {
         newNotice = "1";
         el.innerHTML = `<div class="new-notice-count">${newNotice}</div>`
       } else {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_165405) do
+ActiveRecord::Schema.define(version: 2020_09_05_093513) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -81,10 +81,10 @@ ActiveRecord::Schema.define(version: 2020_09_04_165405) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "friend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
     t.index ["friend_id"], name: "index_rooms_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_rooms_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_rooms_on_user_id"

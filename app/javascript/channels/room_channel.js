@@ -1,6 +1,6 @@
 import consumer from "./consumer"
-$(function() {
 
+$(document).on('turbolinks:load', function() {
   const chatRoom = consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room_id') }, {
     connected() {
       // Called when the subscription is ready for use on the server
@@ -36,6 +36,6 @@ $(function() {
       const message = text.value;
       chatRoom.speak(message);
       text.value = '';
-    });
-  
+  });
 });
+

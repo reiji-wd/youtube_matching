@@ -1,5 +1,9 @@
 class RoomsController < ApplicationController
   def index
+    @rooms = current_user.rooms + current_user.reverses_of_rooms
+    @rooms.sort! do |a, b|
+      b[:updated_at] <=> a[:updated_at]
+    end
   end
 
   def show

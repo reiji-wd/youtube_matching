@@ -23,9 +23,10 @@ class User < ApplicationRecord
   has_many :otherfriends, through: :reverses_of_relationship, source: :user
 
   has_many :notices, dependent: :destroy
-  has_many :notices_sender, through: :notice, source: :sender
+  has_many :notices_sender, through: :notices, source: :sender
 
   has_many :rooms, dependent: :destroy
+  has_many :reverses_of_rooms, class_name: 'Room', foreign_key: 'friend_id', dependent: :destroy
 
   has_many :messages, dependent: :destroy
 
