@@ -1,7 +1,7 @@
 import consumer from "./consumer"
 
-$(document).on('turbolinks:load', function() {
-  const chatRoom = consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room_id') }, {
+$(function() {
+  consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room_id') }, {
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -26,16 +26,8 @@ $(document).on('turbolinks:load', function() {
   
     speak: function(content) {
       // debugger
-      return this.perform('speak', { content: content });
+      return this.perform('speak',);
     }
-  });
-  
-    const btn = document.querySelector('.message-btn');
-    const text = document.querySelector('.message-text');
-    btn.addEventListener('click', function() {
-      const message = text.value;
-      chatRoom.speak(message);
-      text.value = '';
   });
 });
 

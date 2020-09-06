@@ -5,6 +5,13 @@
     <%= render @messages %>
   </div>
 
-  <textarea class="message-text"></textarea>
-  <button class="message-btn">送信</button>
+  <%= form_with(model: current_user.messages.build) do |f| %>
+    <%= f.text_area :content, class: "message-text" %>
+    <%= f.file_field :image %>
+    <%= hidden_field_tag :room_id, @room.id %>
+    <%= f.submit '送信' , class: "message-btn" %>
+  <% end %>
+
+  <%# <textarea class="message-text"></textarea>
+  <button class="message-btn">送信</button> %>
 </div>

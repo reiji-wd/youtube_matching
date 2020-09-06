@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def create
+    @post = current_user.posts.create(post_params)
   end
 
   def destroy
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image)
   end
 
   def correct_user

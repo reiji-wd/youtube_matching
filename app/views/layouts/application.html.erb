@@ -24,9 +24,6 @@
         <%# <%= render 'layouts/navbar' %> 
     
     <%= yield %>
-    <% if content_for?(:body_attributes) %>
-      <%= yield(:body_attributes) %>
-    <% end %>
-
+    
   </body>
 </html>

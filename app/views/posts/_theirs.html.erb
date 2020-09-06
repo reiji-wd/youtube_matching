@@ -7,6 +7,12 @@
       <%= post.content %>
     </div>
 
+    <% if post.image.file != nil %>
+      <div class="post-image">
+        <%= image_tag post.image.to_s %>
+      </div>
+    <% end %>
+
     <div class="post-time">
       <%= post.created_at.to_s(:datetime_jp) %>
     </div>

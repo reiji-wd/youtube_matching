@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-const toppageChannel = consumer.subscriptions.create("ToppageChannel", {
+consumer.subscriptions.create("ToppageChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -10,7 +10,6 @@ const toppageChannel = consumer.subscriptions.create("ToppageChannel", {
   },
 
   received(data) {
-    debugger
     // const posts = document.querySelector('.posts');
     // posts.insertAdjacentHTML('afterbegin', data['post']);
 //     const el = document.querySelector('#user_id');
@@ -31,16 +30,19 @@ const toppageChannel = consumer.subscriptions.create("ToppageChannel", {
   }
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-  const text = document.querySelector('.post-text');
-  const btn = document.querySelector('.post-btn') ;
-  btn.addEventListener('click', function(){
-  const post = text.value;
-  // debugger
-  toppageChannel.tweet(post, user_id)
-  text.value = '';
-  });
-});
+// document.addEventListener('DOMContentLoaded', function(){
+//   const text = document.querySelector('.post-text');
+//   const image = document.querySelector('post-image');
+//   const btn = document.querySelector('.post-btn') ;
+//   btn.addEventListener('click', function(){
+//   const postText = text.value;
+//   const postImage = image.
+//   debugger
+//   // debugger
+//   toppageChannel.tweet(postText, postImage)
+//   text.value = '';
+//   });
+// });
 
 
 

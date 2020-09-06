@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'messages/create'
   root to: 'toppages#index'
 
   get 'signup', to: 'users#new'
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show, :create]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :messages, only: [:create]
   
 end

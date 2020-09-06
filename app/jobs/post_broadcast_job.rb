@@ -2,6 +2,7 @@ class PostBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(post)
+    
     users = []
     friends = post.user.friends + post.user.otherfriends
     friends.each do |friend|
@@ -11,10 +12,9 @@ class PostBroadcastJob < ApplicationJob
     mine = ApplicationController.render(
       partial: "posts/mine",
       locals: { post: post, current_user: post.user })
-      
-      UserChannel.broadcast_to(post.user,  mine: mine, post: post)
-      
-      users.each do |user|
+    UserChannel.broadcast_to(post.user,  mine: mine, post: post)
+
+    users.each do |user|
       theirs = ApplicationController.render(
         partial: "posts/theirs",
         locals: { post: post, current_user: user })
