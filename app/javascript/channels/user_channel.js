@@ -14,9 +14,8 @@ consumer.subscriptions.create("UserChannel", {
       $('#notices').prepend(data.notice);
       var el = document.querySelector('.new-notice');
       var otherel = document.querySelector('.new-notice-count')
-      var newNotice = el.text;
       if(otherel == undefined) {
-        newNotice = "1";
+        var newNotice = "1";
         el.innerHTML = `<div class="new-notice-count">${newNotice}</div>`
       } else {
         var counts = Number(otherel.textContent);
@@ -40,6 +39,24 @@ consumer.subscriptions.create("UserChannel", {
       $('.posts').prepend(html);
     }
     
+    if(data.message) {
+      var el = document.querySelector(`.new-message-${data.message.room_id}`);
+      var otherel = document.querySelector(`.new-message-count-${data.message.room_id}`);
+      if(el == undefined) {
+        var rooms = document.querySelector('.rooms');
+        rooms.insertAdjacentHTML('afterbegin', data.html)
+      }
+      if(otherel == undefined) {
+        var newMessage = "1";
+        el.innerHTML = `<div class="new-message-count-${data.message.room_id}">${newMessage}</div>`
+      } else {
+        var counts = Number(otherel.textContent);
+        counts += 1;
+        String(counts)
+        otherel.textContent = counts;
+      }
+      
+    }
 
 
     // Called when there's incoming data on the websocket for this channel

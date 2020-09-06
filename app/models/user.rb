@@ -33,6 +33,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorites_post, through: :favorites, source: :post
 
+  def has_rooms
+    rooms = self.rooms + self.reverses_of_rooms
+    rooms.sort! do |a, b|
+      b[:update_at] <=> a[:updates_at]
+    end
+  end
+
   def like(youtuber)
       self.likes.find_or_create_by(youtuber_id: youtuber.id)
   end

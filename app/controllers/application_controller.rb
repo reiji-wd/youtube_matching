@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include YoutubesHelper
   include NoticesHelper
+  include MessagesHelper
 
   private
 

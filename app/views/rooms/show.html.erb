@@ -1,4 +1,4 @@
-<div id='room' data-room_id="<%= @room.id %>">
+<div id='room' data-room-id="<%= @room.id %>">
   <%= "#{@user.name}さんとのトークルーム" %>
 
   <div class="messages">
@@ -12,6 +12,4 @@
     <%= f.submit '送信' , class: "message-btn" %>
   <% end %>
 
-  <%# <textarea class="message-text"></textarea>
-  <button class="message-btn">送信</button> %>
 </div>

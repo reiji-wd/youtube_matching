@@ -1,9 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = current_user.rooms + current_user.reverses_of_rooms
-    @rooms.sort! do |a, b|
-      b[:updated_at] <=> a[:updated_at]
-    end
+    @rooms = current_user.has_rooms
   end
 
   def show
@@ -13,6 +10,8 @@ class RoomsController < ApplicationController
     else
       @user = User.find_by(id: @room.friend_id)
     end
+    new_messages = Message.where(room_id: @room.id, check: nil).where.not(user_id: current_user.id)
+    new_messages.update(check: current_user.id)
     @messages = @room.messages
   end
 

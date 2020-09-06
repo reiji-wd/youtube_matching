@@ -1,7 +1,7 @@
 import consumer from "./consumer"
 
 $(function() {
-  consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room_id') }, {
+  consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room-id') }, {
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -21,6 +21,7 @@ $(function() {
       }
 
       $('.messages').append(html);
+
       // Called when there's incoming data on the websocket for this channel
     },
   
