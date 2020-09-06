@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
       @user = User.find_by(id: @room.friend_id)
     end
     new_messages = Message.where(room_id: @room.id, check: nil).where.not(user_id: current_user.id)
-    new_messages.update(check: current_user.id)
+    new_messages.update(check: "check")
     @messages = @room.messages
   end
 

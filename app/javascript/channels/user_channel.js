@@ -42,23 +42,31 @@ consumer.subscriptions.create("UserChannel", {
     if(data.message) {
       var el = document.querySelector(`.new-message-${data.message.room_id}`);
       var otherel = document.querySelector(`.new-message-count-${data.message.room_id}`);
-      if(el == undefined) {
-        var rooms = document.querySelector('.rooms');
-        rooms.insertAdjacentHTML('afterbegin', data.html)
-      }
-      if(otherel == undefined) {
-        var newMessage = "1";
-        el.innerHTML = `<div class="new-message-count-${data.message.room_id}">${newMessage}</div>`
-      } else {
-        var counts = Number(otherel.textContent);
-        counts += 1;
-        String(counts)
-        otherel.textContent = counts;
-      }
-      
+      var dataRoomId = document.querySelector(`[data-room-id="${data.message.room_id}"]`);
+        if(dataRoomId != undefined) {
+          this.check(data.message);
+        } else {
+          if(el == undefined) {
+            var rooms = document.querySelector('.rooms');
+            rooms.insertAdjacentHTML('afterbegin', data.html)
+          }
+          if(otherel == undefined) {
+            var newMessage = "1";
+            el.innerHTML = `<div class="new-message-count-${data.message.room_id}">${newMessage}</div>`
+          } else {
+            var counts = Number(otherel.textContent);
+            counts += 1;
+            String(counts)
+            otherel.textContent = counts;
+          }
+        }
     }
+  },
 
-
-    // Called when there's incoming data on the websocket for this channel
+  check: function(message) {
+    return this.perform('check', {
+      message: message
+    });
   }
+  
 });
