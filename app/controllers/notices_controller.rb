@@ -1,6 +1,6 @@
 class NoticesController < ApplicationController
   def show
-    @notices = Notice.where(reciever_id: current_user.id)
+    @notices = Notice.where(reciever_id: current_user.id).order(id: :desc)
     @notices.update(check: "check")
   end
 

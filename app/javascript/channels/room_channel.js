@@ -12,16 +12,7 @@ $(function() {
     },
   
     received(data) {
-      const el = document.querySelector('#user_id');
-      const user_id = Number(el.getAttribute('data-user-id'));
 
-      if (user_id === data.message.user_id) {
-        var html = data.mine
-      } else {
-        var html = data.theirs
-      }
-
-      $('.messages').append(html);
 
       // Called when there's incoming data on the websocket for this channel
     },

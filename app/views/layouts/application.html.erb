@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <div data-turbolinks="false">
       <% if logged_in? %>
         <div id="main-content" data-<%= current_user.id %>= "<%= current_user.id %>">
-          <%= link_to '通知', notice_path(current_user) %>
-          <%= render 'notices/count' %>
-            <%= link_to 'トークルーム一覧' ,rooms_path %>
+          <div class="new-notice">
+            <%= link_to '通知', notice_path(current_user) %>
+            <%= render 'notices/count' %>
+          </div>
+
+          <%= link_to 'トークルーム一覧' ,rooms_path %>
         </div>
 
         <%= render 'search/form' %>
@@ -24,6 +28,7 @@
           <%# <%= render 'layouts/navbar' %> 
       
       <%= yield %>
+
     </div>
   </body>
 </html>

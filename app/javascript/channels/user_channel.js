@@ -11,21 +11,20 @@ import consumer from "./consumer"
   
     received(data) {
       if(data.notice) {
-        $('#notices').prepend(data.notice);
-        var el = document.querySelector('.new-notice');
-        var otherel = document.querySelector('.new-notice-count')
-        if(otherel == undefined) {
-          var newNotice = "1";
-          el.innerHTML = `<div class="new-notice-count">${newNotice}</div>`
-        } else {
-          var counts = Number(otherel.textContent);
+        var notices = document.querySelector('.notices');
+        var newNotice = document.querySelector('.new-notice');
+        var newNoticeCount = document.querySelector('.new-notice-count');
+        if(notices != undefined) {
+          $(notices).prepend(data.html);
+          this.noticecheck(data.notice);
+        }
+        if(newNoticeCount == undefined) {
+          newNotice.innerHTML += "<div class='new-notice-count'>1</div>"
+        }else{
+          var counts = Number(newNoticeCount.textContent);
           counts += 1;
           String(counts);
-          otherel.textContent = counts;
-        }
-        const notices = document.querySelector(".notices");
-        if(notices == undefined) {
-          this.noticecheck(data.notice);
+          newNoticeCount.textContent = counts;
         }
       }
       
@@ -34,13 +33,15 @@ import consumer from "./consumer"
       }
   
       if(data.post) {
-        if(data.mine) {
-          var html = data.mine
-        }
-        if(data.theirs) {
-          var html = data.theirs
-        }
-        $('.posts').prepend(html);
+        var posts = document.querySelector('.posts');
+        if(posts != undefined)
+          if(data.mine) {
+            var html = data.mine
+          }
+          if(data.theirs) {
+            var html = data.theirs
+          }
+          posts.insertAdjacentHTML('afterbegin', html);
       }
       
       if(data.message) {
@@ -69,9 +70,18 @@ import consumer from "./consumer"
             newMessageCount.textContent = counts;
           }
         }
+        
         // メッセージが来たとき、もしルームが表示されていたら既読をつける
         if(roomShow != undefined) {
-          this.messagecheck(data.message);
+          const el = document.querySelector('#user_id');
+          const user_id = Number(el.getAttribute('data-user-id'));
+          if (user_id === data.message.user_id) {
+            var html = data.mine
+          } else {
+            var html = data.theirs
+            this.messagecheck(data.message);
+          }
+          $('.messages').append(html);
         }
       }
     },

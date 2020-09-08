@@ -3,8 +3,7 @@ class FriendrequestsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @friendrequests = Friendrequest.where(friend_id: @user.id)
-    # binding.pry
+    @friendrequests = Friendrequest.where(friend_id: @user.id).order(id: :desc)
   end
 
   def create
