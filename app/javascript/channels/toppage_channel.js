@@ -30,19 +30,6 @@ consumer.subscriptions.create("ToppageChannel", {
   }
 });
 
-// document.addEventListener('DOMContentLoaded', function(){
-//   const text = document.querySelector('.post-text');
-//   const image = document.querySelector('post-image');
-//   const btn = document.querySelector('.post-btn') ;
-//   btn.addEventListener('click', function(){
-//   const postText = text.value;
-//   const postImage = image.
-//   debugger
-//   // debugger
-//   toppageChannel.tweet(postText, postImage)
-//   text.value = '';
-//   });
-// });
 
 
 

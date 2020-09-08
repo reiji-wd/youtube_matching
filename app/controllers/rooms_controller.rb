@@ -5,6 +5,9 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    if current_user != @room.user && current_user != @room.friend
+      redirect_to root_path
+    end
     if current_user.id != @room.user_id 
       @user = User.find_by(id: @room.user_id)
     else

@@ -19,7 +19,7 @@ consumer.subscriptions.create("FriendChannel", {
       return this.perform('permit');
     }
 
-  });
+});
     
 
 

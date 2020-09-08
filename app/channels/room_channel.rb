@@ -11,7 +11,4 @@ class RoomChannel < ApplicationCable::Channel
     # Message.create! content: data['content'], user_id: current_user.id, room_id: params['room']
   end
 
-  def check(data)
-    binding.pry
-  end
 end

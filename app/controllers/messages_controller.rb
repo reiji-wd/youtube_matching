@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
   def create
     @message = current_user.messages.create(message_params)
+    @room = Room.find(@message.room_id)
+    @room.update(updated_at: @message.created_at)
   end
 
   private

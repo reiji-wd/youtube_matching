@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'messages/create'
   root to: 'toppages#index'
 
   get 'signup', to: 'users#new'

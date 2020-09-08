@@ -1,5 +1,6 @@
 import consumer from "./consumer"
 
+// $(document).on('turbolinks:load', function() {
 $(function() {
   consumer.subscriptions.create({ channel: "RoomChannel", room: $('#room').data('room-id') }, {
     connected() {
@@ -30,5 +31,6 @@ $(function() {
       return this.perform('speak',);
     }
   });
-});
+})
+// });
 

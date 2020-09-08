@@ -10,20 +10,20 @@
   </head>
 
   <body>
-
-    <% if logged_in? %>
-      <div id="main-content" data-<%= current_user.id %>= "<%= current_user.id %>">
-        <%= link_to '通知', notice_path(current_user) %>
-        <%= render 'notices/count' %>
-          <%= link_to 'トークルーム一覧' ,rooms_path %>
-      </div>
+    <div data-turbolinks="false">
+      <% if logged_in? %>
+        <div id="main-content" data-<%= current_user.id %>= "<%= current_user.id %>">
+          <%= link_to '通知', notice_path(current_user) %>
+          <%= render 'notices/count' %>
+            <%= link_to 'トークルーム一覧' ,rooms_path %>
+        </div>
 
         <%= render 'search/form' %>
         <input type="hidden" id="user_id" data-user-id="<%= current_user.id %>">
-    <% end %>
-        <%# <%= render 'layouts/navbar' %> 
-    
-    <%= yield %>
-    
+      <% end %>
+          <%# <%= render 'layouts/navbar' %> 
+      
+      <%= yield %>
+    </div>
   </body>
 </html>

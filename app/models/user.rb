@@ -36,7 +36,7 @@ class User < ApplicationRecord
   def has_rooms
     rooms = self.rooms + self.reverses_of_rooms
     rooms.sort! do |a, b|
-      b[:update_at] <=> a[:updates_at]
+      b[:updated_at] <=> a[:updated_at]
     end
   end
 

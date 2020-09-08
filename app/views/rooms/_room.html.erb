@@ -1,6 +1,6 @@
 <% if room.messages.any? %>
-  <div class="room-item">
-    <%= link_to room.id, room_path(room) %>
-    <%= render 'messages/count', room: room, current_user: current_user %>
+  <div class="room-item room-<%= room.id %>">
+      <%= link_to room.id, room_path(room) %>
+      <%= render 'messages/count', room: room, current_user: current_user %>
   </div>
 <% end %>
