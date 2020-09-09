@@ -21,9 +21,7 @@
             <%= link_to 'メッセージを送る', room_path(@room) %>
           </div>
         <% else %>
-          <div class="profile-friend-btn<%= @user.id %>">
-            <%= render 'friendrequests/requestbtn', user: @user %>
-          </div>
+          <%= render 'friendrequests/btn', user: @user %>
         <% end %>
 
       <% else %>

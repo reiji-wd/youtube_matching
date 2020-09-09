@@ -27,10 +27,6 @@ import consumer from "./consumer"
           newNoticeCount.textContent = counts;
         }
       }
-      
-      if(data.request) {
-        $('#requests').prepend(data.request);
-      }
   
       if(data.post) {
         var posts = document.querySelector('.posts');

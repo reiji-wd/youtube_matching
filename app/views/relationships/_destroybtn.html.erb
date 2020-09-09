@@ -1,4 +1,11 @@
-<%= form_with(model: current_user.relationships.find_by(friend_id: user.id), method: :delete) do |f| %>
-  <%= hidden_field_tag :friend_id, user.id %>
-  <%= f.submit 'フレンド解除' %>
+<% if current_user.friend?(user) %>
+  <%= form_with(model: current_user.relationships.find_by(friend_id: user.id), method: :delete) do |f| %>
+    <%= f.submit 'フレンド解除' %>
+  <% end %>
+<% end %>
+
+<% if current_user.otherfriend?(user) %>
+  <%= form_with(model: current_user.reverses_of_relationship.find_by(user_id: user.id), method: :delete) do |f| %>
+    <%= f.submit 'フレンド解除' %>
+  <% end %>
 <% end %>
