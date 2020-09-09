@@ -33,6 +33,10 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorites_post, through: :favorites, source: :post
 
+  def feed_posts
+    Post.where(user_id: self.friend_ids + self.otherfriend_ids + [self.id])
+  end
+
   def has_rooms
     rooms = self.rooms + self.reverses_of_rooms
     rooms.sort! do |a, b|
