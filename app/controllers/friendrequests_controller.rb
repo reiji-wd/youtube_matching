@@ -1,9 +1,8 @@
 class FriendrequestsController < ApplicationController
   before_action :require_user_logged_in
 
-  def show
-    @user = User.find(params[:id])
-    @friendrequests = Friendrequest.where(friend_id: @user.id).order(id: :desc)
+  def index
+    @friendrequests = Friendrequest.where(friend_id: current_user.id).order(id: :desc)
   end
 
   def create

@@ -12,7 +12,6 @@ class MessageBroadcastJob < ApplicationJob
     )
 
     room = Room.find(message.room_id)
-    users = []
     user = User.find(room.user.id)
     friend = User.find(room.friend.id)
 
