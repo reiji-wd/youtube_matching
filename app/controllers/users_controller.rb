@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
-
-  def index
-    @users = User.all
-  end
+  before_action :require_user_logged_in, only: [:show]
 
   def show
     @user = User.find(params[:id])
@@ -18,6 +14,18 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def edit
+    if current_user.id != params[:id].to_i
+      redirect_to root_url
+    end
+  end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to user_url(current_user)
+    end
   end
 
   def create
@@ -41,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(user_id: user_id)
+    params.require(:user).permit(:name, :email, :content, :password, :password_confirmation).merge(user_id: user_id)
   end
 
   def user_id

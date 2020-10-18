@@ -1,21 +1,31 @@
 
   <div class="post-item">
-
-    <div class="post-name">
-      <%= link_to post.user.name, user_path(post.user) %>
+    <div class="post-item-user">
+      <div class="post-item-user-icon">
+        <% if post.user.icon == nil %>
+          <%= image_tag '/user_icon/user_default.jpg' %>
+        <% else %>
+          <%= image_tag post.user.icon %>
+        <% end %>
+      </div>
+      <div class="post-item-user-name">
+        <%= link_to post.user.name, user_path(post.user) %>
+      </div>
     </div>
   
-    <div class="post-content">
-      <%= post.content %>
-    </div>
-    
-    <% if post.image.file != nil %>
-      <div class="post-image">
-        <%= image_tag post.image.to_s %>
+    <div class="post-item-main">
+      <div class="post-item-main-content">
+        <%= post.content %>
       </div>
-    <% end %>
+      
+      <% if post.image.file != nil %>
+        <div class="post-item-main-image">
+          <%= image_tag post.image.to_s, size: 200 %>
+        </div>
+      <% end %>
+    </div>
 
-    <div class="post-time">
+    <div class="post-item-time">
       <%= post.created_at.to_s(:datetime_jp) %>
     </div>
 
@@ -26,4 +36,5 @@
     <% if current_user == post.user %>
       <%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: 'post-delete' %>
     <% end %>
+    
   </div>

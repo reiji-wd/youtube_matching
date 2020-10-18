@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
 
+  def show
+  end
+
   def create
     @post = current_user.posts.create(post_params)
   end

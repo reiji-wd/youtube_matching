@@ -7,28 +7,32 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
-    <div data-turbolinks="false">
-      <% if logged_in? %>
-        <div id="main-content" data-<%= current_user.id %>= "<%= current_user.id %>">
-          <div class="new-notice">
-            <%= link_to '通知', notices_path %>
-            <%= render 'notices/count' %>
-          </div>
+    <%= render 'layouts/header' %>
 
-          <%= link_to 'トークルーム一覧' ,rooms_path %>
-        </div>
-
-        <%= render 'search/form' %>
-        <input type="hidden" id="user_id" data-user-id="<%= current_user.id %>">
-      <% end %>
-          <%# <%= render 'layouts/navbar' %> 
-      
+    <%= render 'layouts/flash_messages' %>
+    <% if logged_in? %>
+      <div class="leftbar">
+        <%= render 'layouts/leftbar' %>
+      </div>
+      <div class="rightbar">
+        <%= render 'layouts/rightbar' %>
+      </div>
+      <div class="main">
+        <%# <div class="new-notice">
+          <%= link_to '通知', notices_path %>
+          <%# <%= render 'notices/count' %>
+        <%# </div> %> 
+        <%# <input type="hidden" id="user_id" data-user-id="<%= current_user.id %>
+        <%# <div class="main-content"> %>
+        <%# </div> %>
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
+    <% end %>
 
-    </div>
   </body>
 </html>

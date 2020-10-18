@@ -4,4 +4,7 @@ class SearchController < ApplicationController
     @users = User.where('name LIKE ?', "%#{params[:keyword]}%")
   end
 
+  def form
+  end
+
 end

@@ -1,0 +1,70 @@
+.search-form {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: white;
+
+  &-text {
+    border: none;
+    background-color: $cSpace;
+    border-radius: 30px;
+    margin-right: 10px;
+    width: 85%;
+    &:focus {
+      outline: none;
+      border: 2px solid blue;
+    }
+  }
+
+  &-btn {
+    width: 15%;
+    border: none;
+    border-radius: 10px;
+    background-color: $cSkyBlue;
+    color: white;
+    font-weight: bold;
+    &:hover {
+      background-color: #1b82da;
+    }
+  }
+
+
+
+  &-right {
+    width: 100%;
+    border-bottom: 1px solid $cSpace;
+    & form {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    &.hidden {
+      display: none;
+    }
+  }
+
+
+
+  &-top {
+    position: fixed;
+    top: 65px;
+    left: 14%;
+    width: 86%;
+    display: block;
+    border-bottom: 1px solid $cSpace;
+    @include large {
+      width: 56%;
+    }
+    & form {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      @include large {
+        width: 100%;
+      }
+    }
+  }
+
+}

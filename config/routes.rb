@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   get 'youtuber/search', to: 'youtubers#search'
 
   resources :search, only: [:index]
+  get 'search/form', to: 'search#top'
 
   get 'users/look', to: 'users#look'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:show, :new, :create, :edit, :update]
 
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:show, :create, :destroy]
   resources :likes, only: [:create, :destroy]
-  resources :friendrequests, only: [:index, :create, :destroy]
+  resources :friendrequests, only: [:index, :show, :create, :destroy]
   resources :notices, only: [:index, :create, :destroy]
   resources :rooms, only: [:index, :show, :create]
   resources :relationships, only: [:create, :destroy]

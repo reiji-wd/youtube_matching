@@ -1,0 +1,12 @@
+
+  .main {
+    position: absolute;
+    top: 65px;
+    left: 14%;
+    width: 86%;
+
+    @include large {
+      width: 56%;
+    }
+
+  }

@@ -1,0 +1,22 @@
+header {
+  position: fixed;
+  width: 100%;
+  height: 65px;
+  background-color: $cSkyBlue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+
+  & a {
+    color: white;
+    font-size: 20px;
+  }
+  
+  & .header-right {
+    &-items:nth-child(1) {
+      margin-right: 10px;
+    }
+  }
+
+}

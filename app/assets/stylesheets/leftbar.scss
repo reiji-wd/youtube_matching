@@ -1,0 +1,25 @@
+.leftbar {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  width: 14%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid $cSpace;
+  
+
+  &-item {
+    margin-top: 30px;
+
+    & a {
+      color: $cSkyBlue;
+      &:hover {
+        color: #1b82da;
+      }
+    }
+
+  }
+}

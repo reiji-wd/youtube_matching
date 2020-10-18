@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_142608) do
+ActiveRecord::Schema.define(version: 2020_09_11_141635) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 2020_09_09_142608) do
     t.string "content"
     t.string "check"
     t.integer "sender_id", null: false
+    t.string "action"
+    t.integer "request_id"
+    t.integer "post_id"
     t.index ["reciever_id"], name: "index_notices_on_reciever_id"
     t.index ["sender_id"], name: "index_notices_on_sender_id"
   end
@@ -101,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_142608) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_id"
     t.string "icon"
+    t.text "content"
   end
 
   create_table "youtubers", force: :cascade do |t|

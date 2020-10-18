@@ -26,6 +26,7 @@
 
       <% else %>
         <%= link_to 'フレンド申請一覧', friendrequests_path %>
+        <%= link_to 'プロフィールを編集', edit_user_path(current_user) %>
       <% end %>
     </div>
   </div>
@@ -72,5 +73,3 @@
   </div>
 
 </div>
-
-<%= javascript_pack_tag 'profile'%>

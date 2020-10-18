@@ -10,7 +10,9 @@ class RelationshipsController < ApplicationController
       @request_id = request.id
       request.destroy
       relationship = current_user.friend(@user)
-      notice = Notice.create(sender_id: current_user.id, reciever_id: @user.id, content: "#{current_user.name}さんとフレンドになりました。")
+      Notice.create(sender_id: current_user.id, reciever_id: @user.id,
+                            content: "#{current_user.name}さんとフレンドになりました。", 
+                            action: "friend")
       Room.create(user_id: relationship.user_id, friend_id: relationship.friend_id, relationship_id: relationship.id)
     end
   end

@@ -1,0 +1,19 @@
+<div class="post-form">
+  <%= form_with(model: current_user.posts.build)  do |f| %>
+    <div class="post-form-main">
+      <div class="post-form-main-icon">
+        <% if current_user.icon == nil %>
+          <%= image_tag '/user_icon/user_default.jpg' %>
+        <% else %>
+          <%= image_tag current_user.icon %>
+        <% end %>
+      </div>
+      <%= f.text_area :content, placeholder: "今の気持ちをつぶやこう", class:"post-form-main-text"%>
+    </div>
+
+    <div class="post-form-bottom">
+      <%= f.file_field :image, class: "post-form-bottom-image" %>
+      <%= f.submit "投稿する", class: "post-form-bottom-btn" %>
+    </div>
+  <% end %>
+</div>

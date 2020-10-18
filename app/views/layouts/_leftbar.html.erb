@@ -1,0 +1,29 @@
+    <div class="leftbar-item">
+      <%= link_to root_path, method: :get do %>
+          <i class="fas fa-home fa-2x "></i>
+      <% end %>
+    </div>
+    
+    <div class="leftbar-item">
+      <%= link_to notices_path, method: :get do %> 
+          <i class="fas fa-envelope fa-2x"></i>
+      <% end %>
+    </div>
+
+    <div class="leftbar-item">
+      <%= link_to rooms_path, method: :get do %>
+          <i class="fas fa-comments fa-2x"></i>
+      <% end %>
+    </div>
+
+    <div class="leftbar-item">
+      <%= link_to friendrequests_path, method: :get do %>
+          <i class="fas fa-user-friends fa-2x"></i>
+      <% end %>
+    </div>
+
+    <div class="leftbar-item"> 
+      <%= link_to search_form_path, method: :get do %>
+        <i class="fas fa-search fa-2x"></i>
+      <% end %>
+    </div>

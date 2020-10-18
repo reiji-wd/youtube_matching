@@ -1,26 +1,15 @@
 <% if logged_in? %>
 
-<div class="post-form">
-  <div class="post-form-main">
-    <%= form_with(model: current_user.posts.build)  do |f| %>
-      <%= f.text_area :content, class:"post-text" %>
-      <%= f.file_field :image %>
-      <%= f.submit "投稿", class: "post-btn" %>
-    <% end %>
-  </div>
+<%= render 'posts/form' %>
 
-  <div class="post-form-btn">
-    <i class="fas fa-angle-double-down"></i>
-  </div>
-
-</div>
+<div class="space"></div>
 
 <div class="posts">
   <%= render @posts %>
 </div>
 
-<%= javascript_pack_tag 'post-form' %>
 <% else %>
   <%= link_to '新規登録', signup_path %>
 <% end%>
 
+<%= javascript_pack_tag "post-form" %>

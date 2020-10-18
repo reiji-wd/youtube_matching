@@ -1,3 +1,14 @@
 <div class="<%= notice.id %>">
-  <%= notice.content %>
+  <% if notice.action == "request" %>
+    <%= link_to notice.content, friendrequest_path(notice.request_id) %>
+  <% end %>
+
+  <% if notice.action == "friend" %>
+    <%= link_to notice.content, user_path(notice.sender) %>
+  <% end %>
+
+  <% if notice.action == "favorite" %>
+    <%= link_to notice.content, post_path(notice.post_id) %>
+  <% end %>
+  
 </div>

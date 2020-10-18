@@ -1,3 +1,41 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.post-item {
+  border-bottom: 1px solid $cSpace;
+  background-color: white;
+  padding: 10px;
+
+  &-user {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      & img {
+        width: 50px;
+        border-radius: 50%;
+        border: 1px solid $cSpace;
+      }
+    }
+
+    &-name {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+  }
+  
+  &-main {
+    padding: 10px 25px;
+
+    &-image img {
+      box-shadow: 0px 0px 2px black;
+      border-radius: 5px;
+    }
+
+  }
+
+
+  &-time {
+    text-align: right;
+    color: gray;
+  }
+  
+}

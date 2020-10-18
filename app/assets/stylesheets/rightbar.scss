@@ -1,0 +1,30 @@
+.rightbar {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 65px;
+  height: 100%;
+  width: 30%;
+  border-left: 1px solid $cSpace;
+  
+  @include large {
+    display: block;
+  }
+
+  &-user {
+    margin-top: 46px;
+    text-align: center;
+    &-icon img{
+      width: 50%;
+      border-radius: 50%;
+      border: 1px solid $cSpace;
+    }
+    &-name {
+      font-size: 25px;
+    }
+    &-content {
+      font-size: 20px;
+    }
+  }
+
+}
