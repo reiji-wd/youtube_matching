@@ -15,6 +15,7 @@ class MessageBroadcastJob < ApplicationJob
     user = User.find(room.user.id)
     friend = User.find(room.friend.id)
 
+
     html = ApplicationController.render(partial: 'rooms/room', locals: {room: room, current_user: friend })
     UserChannel.broadcast_to(friend, message: message, html: html, mine: mine, theirs: theirs)
 

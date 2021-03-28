@@ -1,14 +1,15 @@
 <div class="message-item  <%= 'me' if message.user == current_user %>">
-  <div class="message-name">
+  <div class="message-item-name">
     <%= message.user.name %>
   </div>
-  <div class="message-content">
-    <%= message.content %>
-  </div>
+
+    <div class="message-item-content">
+      <%= message.content %>
+    </div>
 
   <% if message.image.file != nil %>
-    <div class="message-image">
-      <%= image_tag message.image.to_s %>
+    <div class="message-item-image">
+      <%= image_tag message.image.to_s, size: 200 %>
     </div>
   <% end %>
   

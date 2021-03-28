@@ -1,14 +1,45 @@
-<div class="<%= notice.id %>">
-  <% if notice.action == "request" %>
-    <%= link_to notice.content, friendrequest_path(notice.request_id) %>
-  <% end %>
+  <div class="notice-item">
 
-  <% if notice.action == "friend" %>
-    <%= link_to notice.content, user_path(notice.sender) %>
-  <% end %>
+    <% if notice.action == "request" %>
+      <div class="notice-item-icon">
+        <% if notice.sender.icon.file == nil %>
+          <%= image_tag '/user_icon/user_default.jpg', size: 50 %>
+        <% else %>
+          <%= image_tag notice.sender.icon.to_s, size: 50 %>
+        <% end %>
+      </div>
+      <div class="notice-item-content">
+        <%= link_to notice.content, friendrequest_path(notice.request_id) %>
+      </div>
+    <% end %>
 
-  <% if notice.action == "favorite" %>
-    <%= link_to notice.content, post_path(notice.post_id) %>
-  <% end %>
-  
-</div>
+    <% if notice.action == "friend" %>
+      <div class="notice-item-icon">
+        <% if notice.sender.icon.file == nil %>
+          <%= image_tag '/user_icon/user_default.jpg', size: 50 %>
+        <% else %>
+          <%= image_tag notice.sender.icon.to_s, size: 50 %>
+        <% end %>
+      </div>
+      
+      <div class="notice-item-content">
+        <%= link_to notice.content, user_path(notice.sender) %>
+      </div>
+    <% end %>
+
+    <% if notice.action == "favorite" %>
+      <div class="notice-item-icon">
+
+        <% if notice.sender.icon.file == nil %>
+          <%= image_tag '/user_icon/user_default.jpg', size: 50 %>
+        <% else %>
+          <%= image_tag notice.sender.icon.to_s, size: 50 %>
+        <% end %>
+      </div>
+
+      <div class="notice-item-content">
+        <%= link_to notice.content, post_path(notice.post_id) %>
+      </div>
+    <% end %>
+
+  </div>

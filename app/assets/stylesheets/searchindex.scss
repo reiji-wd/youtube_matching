@@ -1,3 +1,34 @@
 .search {
   margin-top: 46px;
+
+  &-menu {
+    background-color: white;
+    position: fixed;
+    width: 86%;
+    @include large {
+      width: 56%;
+    }
+    display: flex;
+    border-bottom: 1px solid $cSpace;
+    & .tab {
+      width: 100px;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & .items {
+    z-index: -100;
+    position: relative;
+    top: 30px;
+    display: none;
+    &.item-open {
+      display: block;
+    }
+  }
 }
+

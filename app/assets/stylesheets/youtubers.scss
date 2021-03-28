@@ -1,0 +1,44 @@
+.youtuber-item {
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $cSpace;
+  & a {
+    text-decoration: none;
+    width: 100%;
+    margin-right: 10px;
+  }
+  &-main {
+    display: flex;
+    justify-content: space-between;
+    &-icon img{
+      width: 50px;
+      border-radius: 50%;
+      border: 1px solid $cSpace;
+    }
+  }
+}
+
+.youtuber-btn {
+
+  & .destroy-btn {
+    border: none;
+    background-color: #ef2727;
+    color: white;
+    border-radius: 5px;
+    &:hover {
+      background-color: #ef2727bf;
+    }
+  }
+
+  & .likes-btn {
+    border: none;
+    background-color: $cSkyBlue;
+    border-radius: 5px;
+    color: white;
+    &:hover {
+      background-color: #1b82da;
+    }
+  }
+
+}

@@ -1,12 +1,10 @@
 class RelationshipsController < ApplicationController
 
   def create
+    # binding.pry
     @user = User.find_by(id: params[:friend_id])
     request = Friendrequest.find_by(user_id: @user.id, friend_id: current_user.id)
-    # もしフレンド申請が取り消しされていた場合
-    if request == nil
-      #　エラーメッセージを表示する
-    else
+
       @request_id = request.id
       request.destroy
       relationship = current_user.friend(@user)
@@ -14,7 +12,6 @@ class RelationshipsController < ApplicationController
                             content: "#{current_user.name}さんとフレンドになりました。", 
                             action: "friend")
       Room.create(user_id: relationship.user_id, friend_id: relationship.friend_id, relationship_id: relationship.id)
-    end
   end
 
   def destroy
@@ -23,7 +20,7 @@ class RelationshipsController < ApplicationController
       user = User.find_by(id: params[:user_id])
       redirect_to user_path(user)
     else
-      if current_user == relationship.user 
+      if current_user == relationship.user
         @user = relationship.friend
       end
       if current_user == relationship.friend

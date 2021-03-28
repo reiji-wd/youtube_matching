@@ -1,3 +1,17 @@
-<div>
-  <%= link_to user.name, user_path(user) %>
-</div>
+
+  <div class="user">
+    <%= link_to user_path(user) do %>
+      <div class="user-left">
+          <div class="user-left-icon">
+            <% if user.icon.file == nil %>
+              <%= image_tag '/user_icon/user_default.jpg' %>
+            <% else %>
+              <%= image_tag user.icon.to_s %>
+            <% end %>
+          </div>
+          <div class="user-left-name">
+            <%= user.name %>
+          </div>
+      </div>
+    <% end %>
+  </div>

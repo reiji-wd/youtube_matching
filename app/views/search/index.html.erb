@@ -3,11 +3,23 @@
 </div>
 
 <div class="search">
-  <div class="posts">
-    <%= render @posts %>
+
+  <div class="search-menu">
+    <div class="search-menu-post tab menu-open">
+      投稿
+    </div>
+    <div class="search-menu-user tab">
+      ユーザー
+    </div>
   </div>
 
-  <div class="users">
+  <div class="posts items item-open">
+    <%= render @posts %>
+  </div>
+  <div class="users items">
     <%= render @users %>
   </div>
+
 </div>
+
+<%= javascript_pack_tag 'tab' %>

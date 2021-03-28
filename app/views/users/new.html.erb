@@ -1,19 +1,31 @@
-<h1>新規登録</h1>
+<div class="toppage-form">
+  <h1>新規登録</h1>
+  
+  <div class="toppage-form-main">
+    <%= form_with(model: @user, local: true) do |f| %>
+    
+    <div class="toppage-form-main-item">
+      <%= f.label :name, 'ユーザ名' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="toppage-form-main-item">
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.email_field :email %>
+    </div>
+    <div class="toppage-form-main-item">
+      <%= f.label :password, 'パスワード' %>
+      <%= f.text_field :password %>
+    </div>
+    <div class="toppage-form-main-item">
+      <%= f.label :password_confirmation, 'パスワード確認' %>
+      <%= f.password_field :password_confirmation %>
+    </div>
 
-<%= form_with(model: @user, local: true) do |f| %>
+      <%= f.submit '新規登録', class: "toppage-form-main-item-signup" %>
 
-  <%= f.label :name, 'ユーザ名' %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email, 'メールアドレス' %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password, 'パスワード' %>
-  <%= f.text_field :password %>
-
-  <%= f.label :password_confirmation, 'パスワード確認' %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit '新規登録' %>
-
-<% end %>
+    <% end %>
+    <div class="toppage-form-main-path">
+      <%= link_to 'ログインはコチラ', login_path %>
+    </div>
+  </div>
+</div>

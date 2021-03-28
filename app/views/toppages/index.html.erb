@@ -9,7 +9,14 @@
 </div>
 
 <% else %>
-  <%= link_to '新規登録', signup_path %>
-<% end%>
-
-<%= javascript_pack_tag "post-form" %>
+  <div class="top">
+    <div class="top-button">
+      <div class="top-button-login">
+        <%= link_to 'ログイン', login_path %>
+      </div>
+      <div class="top-button-signup">
+        <%= link_to '新規登録', signup_path %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,58 @@
+.profile {
+  
+  &-top {
+    text-align: center;
+    &-icon img{
+      margin-top: 15px;
+      border-radius: 50%;
+      border: 1px solid $cSpace;
+    }
+  }
+  &-content {
+    padding: 0px 15px;
+    margin-bottom: 15px;
+  }
+
+
+  &-menu {
+    display: flex;
+    justify-content: space-between;
+    border-top: 5px solid $cSpace;
+    &-posts {
+      width: 15%;
+    }
+    &-favorites {
+      width: 25%;
+    }
+    &-friends {
+      width: 25%;
+    }
+    &-likes {
+      width: 35%;
+    }
+
+    & .tab {
+      text-align: center;
+      height: 30px;
+      line-height: 30px; 
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    & .menu-open {
+      border-bottom: 2px solid $cSkyBlue;
+    }
+
+    &-items {
+      &-contents {
+        & .items {
+          display: none;
+          &.item-open {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

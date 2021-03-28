@@ -1,0 +1,24 @@
+.rooms a{
+  text-decoration: none;
+}
+
+.room-item {
+  border-bottom: 1px solid $cSpace;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-user {
+    display: flex;
+    align-items: center;
+    &-icon img{
+      border-radius: 50%;
+      border: 1px solid $cSpace;
+    }
+    &-name {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+}

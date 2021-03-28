@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @posts = @user.posts.order(id: :desc)
     @favorites = @user.favorites_post
     @youtubers = @user.likes_youtuber
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     else
       @room = Room.find_by(user_id: @user.id, friend_id: current_user.id)
     end
+    @friends  = (@user.friends + @user.otherfriends)
   end
 
   def new
@@ -17,13 +18,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user.id != params[:id].to_i
-      redirect_to root_url
+    @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to @user
     end
   end
 
   def update
-    if current_user.update(user_params)
+    if current_user.update(update_user_params)
       redirect_to user_url(current_user)
     end
   end
@@ -49,7 +51,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :content, :password, :password_confirmation).merge(user_id: user_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(user_id: user_id)
   end
 
   def user_id
@@ -59,6 +61,10 @@ class UsersController < ApplicationController
         user_id = SecureRandom.alphanumeric(10)
       end
     return user_id
+  end
+
+  def update_user_params
+    params.require(:user).permit(:icon, :name, :content, :password, :password_confirmation)
   end
 
 end

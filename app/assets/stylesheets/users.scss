@@ -1,0 +1,46 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid $cSpace;
+  &-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-icon img {
+      width: 50px;
+      border-radius: 50%;
+      border: 1px solid $cSpace;
+    }
+    &-name {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+.user-edit-form {
+  padding-top: 15px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  &-button {
+    color: white;
+    background-color: $cSkyBlue;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 35px;
+    width: 100px;
+    &:hover {
+      background-color: #1b82da;
+    }
+  }
+}

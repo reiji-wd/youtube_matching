@@ -4,17 +4,17 @@
 
 <div class="rightbar-user">
   <div class="rightbar-user-icon">
-    <% if current_user.icon == nil %>
-      <%= image_tag '/user_icon/user_default.jpg' %>
+    <% if current_user.icon.file == nil %>
+      <%= image_tag '/user_icon/user_default.jpg' %> 
     <% else %>
-      <%= image_tag current_user.icon %>
+      <%= image_tag current_user.icon.to_s %>
     <% end %>
   </div>
   <div class="rightbar-user-name">
-    <%= "#{current_user.name}あああああああああああああああ" %>
+    <%= "#{current_user.name}" %>
   </div>
   <div class="rightbar-user-content">
-    <%= "#{current_user.content}あああああああああああ" %>
+    <%= "#{current_user.content}" %>
   </div>
 
   <div class="rightbar-user-edit">

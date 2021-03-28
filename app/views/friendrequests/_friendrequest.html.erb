@@ -1,16 +1,29 @@
-<div class="requests-<%= friendrequest.id %>">
-  <% if friendrequest.user.icon == nil %>
-    <%= image_tag '/user_icon/user_default.jpg' %>
-  <% else %>
-    <%= image_tag friendrequest.user.icon %>
-  <% end %>  
-  <%= friendrequest.user.name %>
-  <div id="request-recieve">
+<div class="request-item">
+  
+  <div class="request-item-user">
+
+    <div class="request-item-user-icon">
+      <% if friendrequest.user.icon.file == nil %>
+        <%= image_tag '/user_icon/user_default.jpg', size: 50 %>
+      <% else %>
+        <%= image_tag friendrequest.user.icon.to_s, size: 50 %>
+      <% end %>  
+    </div>
+    
+    <div class="request-item-user-name">
+      <%= "#{friendrequest.user.name}" %>
+    </div>
+
+  </div>
+
+  <div id="request-item-permit">
     <%= form_with(model: current_user.relationships.build) do |f| %>
       <%= hidden_field_tag :friend_id, friendrequest.user.id %>
-      <%= f.submit '申請を承認する' %>
+      <%= f.submit '申請を承認する', class: "request-item-permit-btn" %>
     <% end %>
   </div>
+  
 </div>
+
 
 

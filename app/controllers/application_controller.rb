@@ -13,8 +13,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def counts(user)
-    @count_posts = user.posts.count
-  end
   
 end

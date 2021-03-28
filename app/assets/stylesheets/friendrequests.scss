@@ -1,0 +1,36 @@
+.request-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid $cSpace;
+
+  &-user {
+    display: flex;
+    align-items: center;
+
+    &-icon img{
+      border-radius: 50%;
+      border: 1px solid $cSpace; 
+    }
+
+    &-name {
+      font-size: 20px;
+      margin-left: 10px;
+    }
+
+  }
+
+  &-permit-btn {
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #3bd04d;
+    height: 30px;
+    &:hover {
+      background-color: #3bd04db5;
+    }
+  }
+
+
+}

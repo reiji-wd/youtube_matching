@@ -2,10 +2,10 @@
   <%= form_with(model: current_user.posts.build)  do |f| %>
     <div class="post-form-main">
       <div class="post-form-main-icon">
-        <% if current_user.icon == nil %>
+        <% if current_user.icon.file == nil %>
           <%= image_tag '/user_icon/user_default.jpg' %>
         <% else %>
-          <%= image_tag current_user.icon %>
+          <%= image_tag current_user.icon.to_s %>
         <% end %>
       </div>
       <%= f.text_area :content, placeholder: "今の気持ちをつぶやこう", class:"post-form-main-text"%>

@@ -2,7 +2,6 @@ class FavoritesController < ApplicationController
   def create
     @post = Post.find_by(id: params[:post_id])
     if @post == nil
-      # 投稿が見つからなかったらエラー文を表示
     else
       current_user.favorite(@post)
       if current_user.id != @post.user_id

@@ -1,0 +1,90 @@
+.top {
+  position: relative;
+  top: 150px;
+  &-button {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 35px;
+    &-login {
+      margin-right: 30px;
+      background-color: $cSkyBlue;
+      border-radius: 5px;
+      font-size: 20px;
+      height: 35px;
+      width: 100px;
+      &:hover {
+        background-color: #1b82da;
+        cursor: pointer;
+      }
+      & a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    &-signup {
+      background-color: #11ce11c7;
+      border-radius: 5px;
+      font-size: 20px;
+      height: 35px;
+      width: 100px;
+      &:hover {
+        background-color: #3bd04d;
+        cursor: pointer;
+      }
+      & a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+
+.toppage-form {
+  & h1 {
+    padding: 10px 0px;
+  }
+  position: relative;
+  top: 65px;
+  text-align: center;
+  &-main {
+    width: 60%;
+    max-width: 450px;
+    margin: 0 auto;
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      &-login {
+        color: white;
+        background-color: $cSkyBlue;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        height: 35px;
+        width: 100px;
+        &:hover {
+          background-color: #1b82da;
+        }
+      }
+      &-signup {
+        color: white;
+        background-color: #11ce11c7;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        height: 35px;
+        width: 100px;
+        &:hover {
+          background-color: #3bd04d;
+        }
+      }
+    }
+    &-path {
+      margin-top: 15px;
+      text-align: right;
+    }
+  }
+
+
+}

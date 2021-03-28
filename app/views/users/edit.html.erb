@@ -1,5 +1,48 @@
-<%= form_with(model: current_user, local: true) do |f| %>
-  <%= f.label :name, 'ユーザ名' %>
-　<%= f.text_field :name, value: current_user.name %>
-  <%= f.submit '更新する' %>
-<% end %>
+<div class="user-edit-form">
+  <%= form_with(model: @user, local: true) do |f| %>
+  
+    <div class="user-edit-form-item">
+      <div>
+        <%= f.label :icon, 'アイコン' %>
+      </div>
+      <div>
+        <%= f.file_field :icon %>
+      </div>
+    </div>
+    <div class="user-edit-form-item">
+      <div>
+        <%= f.label :name, 'ユーザ名' %>
+      </div>
+      <div>
+      　<%= f.text_field :name, value: current_user.name %>
+      </div>
+    </div>
+    <div class="user-edit-form-item">
+      <div>
+        <%= f.label :content, 'プロフィール' %>
+      </div>
+      <div>
+        <%= f.text_area :content, value: current_user.content %>
+      </div>
+    </div>
+    <div class="user-edit-form-item">
+      <div>
+        <%= f.label :password, 'パスワード' %>
+      </div>
+      <div>
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <div class="user-edit-form-item">
+      <div>
+        <%= f.label :password_confirmation, 'パスワード確認' %>
+      </div>
+      <div>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+    <%= f.submit '更新する', class: "user-edit-form-button" %>
+
+  <% end %>
+</div>

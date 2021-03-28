@@ -6,6 +6,9 @@
     
     <div class="leftbar-item">
       <%= link_to notices_path, method: :get do %> 
+          <div class="new-notice">
+            <%= new_notice_count(current_user) %>
+          </div>
           <i class="fas fa-envelope fa-2x"></i>
       <% end %>
     </div>

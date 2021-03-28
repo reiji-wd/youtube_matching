@@ -1,0 +1,62 @@
+.room-name {
+  border-bottom: 1px solid $cSpace;
+  font-size: 30px;
+  padding: 10px;
+  position: fixed;
+  background-color: white;
+  width: 86%;
+  @include large {
+    width: 56%;
+  }
+}
+.messages {
+  padding: 66px 0px 90px 0px;
+
+  & .message-item {
+    padding: 0px 10px;
+
+    &-content {
+      border-radius: 5px;
+      display: inline-block;
+      color: white;
+      background-color: $cSkyBlue;
+      padding: 10px;
+      &.hidden {
+        display: none;
+      }
+    }
+
+    &-image img{
+      border-radius: 5px;
+      background-color: $cSkyBlue;
+      padding: 10px;
+    }
+
+    &.me {
+      text-align: right;
+
+      & .message-item-content {
+        background-color: #11ce11c7;
+      }
+
+      & .message-item-image img {
+        background-color: #11ce11c7;
+      }
+
+    }
+
+  }
+
+}
+
+.message-form {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px -1px 3px 0px #00000024;
+  width: 86%;
+  @include large {
+    width: 56%;
+  }
+}
+

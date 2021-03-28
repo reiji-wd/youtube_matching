@@ -2,10 +2,10 @@
   <div class="post-item">
     <div class="post-item-user">
       <div class="post-item-user-icon">
-        <% if post.user.icon == nil %>
+        <% if post.user.icon.file == nil %>
           <%= image_tag '/user_icon/user_default.jpg' %>
         <% else %>
-          <%= image_tag post.user.icon %>
+          <%= image_tag post.user.icon.to_s %>
         <% end %>
       </div>
       <div class="post-item-user-name">
@@ -28,13 +28,15 @@
     <div class="post-item-time">
       <%= post.created_at.to_s(:datetime_jp) %>
     </div>
+    
+    <div class="post-item-bottom">
+      <div class="post-favorites-<%= post.id %>">
+        <%= render 'favorites/btn', post: post %>
+      </div>
 
-    <div class="post-favorites-<%= post.id %>">
-      <%= render 'favorites/btn', post: post %>
+      <% if current_user == post.user %>
+        <%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: 'post-delete' %>
+      <% end %>
     </div>
-
-    <% if current_user == post.user %>
-      <%= link_to "削除", post, method: :delete, data: { confirm: "この投稿を削除しますか？" }, class: 'post-delete' %>
-    <% end %>
     
   </div>

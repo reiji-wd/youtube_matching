@@ -1,7 +1,9 @@
 class ToppagesController < ApplicationController
 
   def index
-    @posts = current_user.feed_posts.order(id: :desc)
+    if logged_in?
+      @posts = current_user.feed_posts.order(id: :desc)
+    end
   end
 
 end

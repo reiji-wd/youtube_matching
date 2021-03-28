@@ -1,13 +1,13 @@
-<div class="user-profile">
+<div class="profile">
   <div class="profile-top">
     <div class="profile-top-icon">
-      <% if @user.icon == nil %>
+      <% if @user.icon.file == nil %>
         <%= image_tag '/user_icon/user_default.jpg' %>
-      <% else %>
-        <%= image_tag @user.icon %>
-      <% end %>
+      <% else %> 
+        <%= image_tag @user.icon.to_s %> 
+      <% end %> 
     </div>
-    <div class="profile-top-right">
+
       <div class="profile-name">
         <%= "#{@user.name}" %>
       </div>
@@ -28,12 +28,14 @@
         <%= link_to 'フレンド申請一覧', friendrequests_path %>
         <%= link_to 'プロフィールを編集', edit_user_path(current_user) %>
       <% end %>
-    </div>
+
   </div>
 
   <div class="profile-content">
-    あああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+    <%= @user.content %>
+    
   </div>
+
 
   <div class="profile-menu">
     <div class="profile-menu-posts tab menu-open">
@@ -52,18 +54,23 @@
 
   <div class="profile-menu-items">
     <div class="profile-menu-items-contents">
-      <div class="posts menu-items item-open">
+      <div class="posts items item-open">
         <%= render @posts %>
       </div>
 
-      <div class="favorites menu-items">
+      <div class="favorites items">
         <%= render @favorites %>
       </div>
 
-      <div class="menu-items">
+      <div class="friends items">
+        <% if @friends.count != 0 %>
+          <% @friends.each do |friend| %>
+            <%= render "user", user: friend %>
+          <% end %>
+        <% end %>
       </div>
 
-      <div class="youtubers menu-items">
+      <div class="youtubers items">
         <% if current_user == @user %>
           <%= link_to 'YouTuberを追加する', youtubers_path %>
         <% end %>
@@ -73,3 +80,5 @@
   </div>
 
 </div>
+
+<%= javascript_pack_tag 'tab' %>

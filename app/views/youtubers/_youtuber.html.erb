@@ -1,26 +1,23 @@
 
 <div class="youtuber-item">
-  <%# <%= link_to "https://www.youtube.com/channel/#{youtuber.channel_id}", target: "_blank" do %> 
-  <%# <%= form_with(url: users_look_path, method: :get, local: true) do |f| %> 
+
     <%= link_to users_look_path(channel_id: youtuber.channel_id) do %>
-      <div class='youtuber-main'>
-        <div class='youtuber-icon'>
+      <div class='youtuber-item-main'>
+        <div class='youtuber-item-main-icon'>
           <%= image_tag youtuber.icon %> 
         </div>  
-        <div class='youtuber-details'>
-          <div class='youtuber-title'>
+        <div class='youtuber-main-content'>
+          <div class='youtuber-main-content-title'>
             <%= "#{youtuber.title}" %> 
           </div>
-          <div class='youtuber-subscriber'>
+          <div class='youtuber-main-content-subscriber'>
             <%= "チャンネル登録者数 #{youtuber.subscribers}人" %>
           </div>
         </div>
       </div>
     <% end %>
-  <%# <% end %> 
-  <%# <% end %>
 
-  <div class="youtuber-likes-<%= youtuber.id %>"> 
+  <div class="youtuber-likes-<%= youtuber.id %> youtuber-btn"> 
     <%= render 'likes/btn', youtuber: youtuber %>
   </div>
 </div> 

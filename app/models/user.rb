@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # mount_uploader :image, ImageUploader
+  mount_uploader :icon, ImageUploader
 
   before_save { self.email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
@@ -71,7 +71,7 @@ class User < ApplicationRecord
   end
 
   def friend(user)
-    unless  self.friends.include?(user) && self.otherfriends.include?(user)
+    if !self.friends.include?(user) && !self.otherfriends.include?(user)
       self.relationships.create(friend_id: user.id)
     end
   end

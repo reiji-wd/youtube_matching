@@ -10,29 +10,20 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-
-    <%= render 'layouts/flash_messages' %>
-    <% if logged_in? %>
-      <div class="leftbar">
-        <%= render 'layouts/leftbar' %>
-      </div>
-      <div class="rightbar">
-        <%= render 'layouts/rightbar' %>
-      </div>
-      <div class="main">
-        <%# <div class="new-notice">
-          <%= link_to '通知', notices_path %>
-          <%# <%= render 'notices/count' %>
-        <%# </div> %> 
-        <%# <input type="hidden" id="user_id" data-user-id="<%= current_user.id %>
-        <%# <div class="main-content"> %>
-        <%# </div> %>
-        <%= yield %>
-      </div>
-    <% else %>
-      <%= yield %>
-    <% end %>
-
+      <%= render 'layouts/header' %>
+        <% if logged_in? %>
+          <input type="hidden" id="user_id" data-user-id="<%= current_user.id %>">
+              <div class="leftbar">
+                <%= render 'layouts/leftbar' %>
+              </div>
+              <div class="rightbar">
+                <%= render 'layouts/rightbar' %>
+              </div>
+              <div class="main">
+                <%= yield %>
+              </div>
+          <% else %>
+            <%= yield %>
+        <% end %>
   </body>
 </html>
